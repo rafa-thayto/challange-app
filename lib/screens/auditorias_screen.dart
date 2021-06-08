@@ -32,7 +32,7 @@ class _AuditoriasScreenState extends State<AuditoriasScreen> {
     return ListView.builder(
         itemCount: auditorias == null ? 0 : auditorias.length,
         itemBuilder: (BuildContext ctx, int index) {
-          return cardAuditoria(auditorias[index]);
+          return cardAuditoria(auditorias![index]);
         });
   }
 
@@ -69,17 +69,18 @@ class _AuditoriasScreenState extends State<AuditoriasScreen> {
                     children: [
                       Expanded(
                         child: Container(
-                          child: Text('Price: ${auditoria.id}'),
+                          child: Text('Data Auditoria: ${auditoria.data}'),
                         ),
                       ),
                       Expanded(
                         child: Container(
-                          child: Text('Condominio: ${auditoria.id}'),
+                          child: Text(
+                              'Status Auditoria: ${auditoria.isOk ? 'OK' : 'NOK'}'),
                         ),
                       ),
                       Expanded(
                         child: Text(
-                          'Bedrooms: ${auditoria.id}',
+                          'Itens com problemas: ${auditoria.itens}',
                         ),
                       )
                     ],
@@ -90,22 +91,6 @@ class _AuditoriasScreenState extends State<AuditoriasScreen> {
                   color: Colors.indigo,
                   fontWeight: FontWeight.bold,
                 ),
-              ),
-              subtitle: Column(
-                children: <Widget>[
-                  Expanded(
-                    flex: 3,
-                    child: Container(
-                      child: Text(
-                        '${auditoria.id},${auditoria.id}, ${auditoria.id}',
-                        style: TextStyle(
-                          color: Colors.indigo,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
               ),
               trailing: Icon(
                 Icons.favorite_outline_sharp,
