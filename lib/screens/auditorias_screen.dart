@@ -1,4 +1,5 @@
 import 'package:audit_center/models/auditoria_model.dart';
+import 'package:audit_center/repositories/auditoria_repository.dart';
 import 'package:flutter/material.dart';
 
 class AuditoriasScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class _AuditoriasScreenState extends State<AuditoriasScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder<List<AuditoriaModel>>(
+        future: AuditoriaRepository().findAllAsync(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return buildListView(snapshot.data);
@@ -30,7 +32,7 @@ class _AuditoriasScreenState extends State<AuditoriasScreen> {
     return ListView.builder(
         itemCount: auditorias == null ? 0 : auditorias.length,
         itemBuilder: (BuildContext ctx, int index) {
-          return cardAuditoria(auditorias![index]);
+          return cardAuditoria(auditorias[index]);
         });
   }
 

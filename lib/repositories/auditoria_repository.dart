@@ -1,7 +1,7 @@
 import 'package:audit_center/models/auditoria_model.dart';
 import 'package:audit_center/repositories/auditoria_database.dart';
 
-class HouseRepository {
+class AuditoriaRepository {
   Future<List<AuditoriaModel>> findAllAsync() async {
     var db = Database();
     await db.createDatabase();
